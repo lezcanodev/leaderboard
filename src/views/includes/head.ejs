@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head lang="en">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><%= pageTitle %></title>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+	
+	<link rel="stylesheet" href="<%= css('main.css') %>" />
+
+	<% if(styles) { %>
+		<% styles.forEach( style => { %>
+			<link rel='stylesheet' href="./css/<%= style %>"
+		<% }); %>
+	<% } %>
+</head>
+<html>
+<body>
+<header style="padding:10px; box-sizing:border-box; width:100%; max-width:800px; margin:auto; text-align:center;">
+	<a href="<%= baseUrl %>">Home</a>
+</header>
+<div id="container">

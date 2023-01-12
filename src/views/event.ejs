@@ -1,0 +1,38 @@
+<%- include('./includes/head', { pageTitle: 'Event', styles: [] }) %>
+<h1 class="h1--title"><%= event.name%></h1>
+<div>
+	<strong>Theme: </strong> <%= event.theme.name %> <br>
+	<strong>Started at: </strong> <%= event.startedAtDate %> <br>
+	<strong>Finished at: </strong> <%= event.finishedAtDate %> <br>
+	<strong>Duration: </strong> <%= event.duration %>
+</div>
+<br>
+<% if(event.competitions){ %>
+
+	<table class="table" style="max-width:330px;">	
+	<thead class="table__header">
+		<tr>
+
+			<th>Country</th>
+			<th>Competitor</th>
+			<th>Score</th>
+		</tr>
+	</thead>
+	<tbody class="table__body">
+		<% event.competitions?.forEach( (competition) => {  %>
+				<tr>
+					<td><img src="<%= getUrlCountryIcon(competition.competitor.country, 24) %>" /></td>	
+					<td>
+						<a href="<%= competitorRoute(competition.competitor.id,
+									     competition.competitor.fullName) 							  %>">
+							<%= competition.competitor.fullName %>
+						</a>
+					</td>
+					<td class="table__score"><%= competition.score %></td>
+				</tr>
+		<% }); %>
+	</tbody>
+	</table>
+<% } %>
+
+<%- include('./includes/footer') %>

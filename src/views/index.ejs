@@ -1,0 +1,42 @@
+<%- include('./includes/head', { pageTitle: 'Home', styles: [] }) %>
+<h1 class="h1--title">Most recent events </h1>
+
+<% if(competitions){ %>
+
+	<table class="table">	
+	<thead class="table__header">
+		<tr>
+			<th>Event name</th>
+			<th>Started at</th>
+			<th>Finished at</th>
+			<th>Winner/s</th>
+			<th>Score</th>
+		</tr>
+	</thead>
+	<tbody class="table__body">
+		<% competitions?.forEach( (competition) => {  %>
+				<tr>
+					<td class="table__event-name">
+					   <a href="<%= eventRoute(competition.ev_id, competition.ev_name) 					   %>"><%= competition.ev_name %></a>
+					</td>
+					<td><%= (new Date(competition.started_at)).toLocaleString() %></td>
+					<td><%= (new Date(competition.finished_at)).toLocaleString() %></td>
+					<td class="table__winners">
+						<% competition.winners?.forEach( winner => {  
+							winner = JSON.parse(winner);
+						%>
+							<a href="<%= competitorRoute(winner.id, winner.name) %>">										<span>
+							<img src="<%= getUrlCountryIcon(winner.country) %>"/>
+								</span>
+								<span><%= winner.name %></span>					
+							</a>
+						<% }); %>
+					</td>
+					<td class="table__score"><%= competition.score %></td>
+				</tr>
+		<% }); %>
+	</tbody>
+	</table>
+<% } %>
+
+<%- include('./includes/footer') %>

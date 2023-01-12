@@ -1,0 +1,115 @@
+body, a{
+	color:#E7E7E7;
+	font-family:sans-serif;
+}
+
+body{
+	background: radial-gradient(circle, rgba(4, 47, 61) 0%, rgba(3, 62, 82) 100% );
+	background-size: 100vw 100vh;
+}
+
+a{
+	text-decoration:none;
+	border-bottom:1px solid transparent;
+}
+a:hover{
+	border-bottom:1px solid #0070FF;;
+}
+
+#container{
+	width:95%;
+	max-width:800px;
+	margin:auto;
+	overflow:hidden;
+}
+
+.h1--title{
+	border-bottom:3px solid #FF8700;
+	border-bottom:3px solid #0070FF;
+	display:inline-block;
+	padding-left:0px;
+	padding-right:40px;
+}
+
+.table{
+	text-align:center;
+	border-collapse: collapse;
+	display:block;
+	width:100%;
+	max-width:800px;
+	margin:auto;
+	overflow-x:auto;
+	table-layout: fixed;
+}
+.table td, th{
+	padding:20px 15px;
+	border: 1px solid rgba(86, 87, 88,.3);
+}	
+
+.table__body{}
+
+.table__event-name{}
+
+.table__winners{
+	display:flex;
+	flex-direction:column;
+	gap:10px;
+}
+
+.table__winners > a{
+	display:flex;
+	align-item:center;
+	justify-content:center;	
+	gap:6px;
+}
+.table__score{
+	font-size:1.3em;
+	font-weight:500;
+	color: #0070FF;
+	text-shadow:0px 0px 10px rgba(255,255,255,.3);
+}
+
+/****************** ANIMATIONS ************************/
+.circle{
+	position:fixed;
+	bottom:100%;
+	right:20px;
+	width:100px;
+	height:100px;
+	border-radius:10px;
+	background: #0070FF;
+	
+	animation-name: floatcircle;
+	animation-delay:0s;
+	animation-duration:9s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-out;
+}
+
+.circle--2{
+	animation-delay:1.5s;
+	right:200px;
+}
+
+.circle--3{
+	animation-delay:1.5s;
+	left:20px;
+}
+.circle--4{
+	animation-delay:.5s;
+	left:200px;
+}
+
+
+@keyframes  floatcircle{
+	0%{
+		bottom:-200px;
+		opacity:.15;
+		transform:rotate(0deg) scale(0);
+	}
+	100%{
+		bottom:100%;
+		opacity:.0;
+		transform:rotate(360deg) scale(1);	
+	}
+}
